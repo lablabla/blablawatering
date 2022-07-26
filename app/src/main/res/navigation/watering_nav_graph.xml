@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/watering_nav_graph"
+    app:startDestination="@id/statusFragment">
+    <fragment
+        android:id="@+id/stationsFragment"
+        android:name="com.lablabla.blablawatering.ui.fragment.StationsFragment"
+        android:label="StationsFragment" />
+    <fragment
+        android:id="@+id/statusFragment"
+        android:name="com.lablabla.blablawatering.ui.fragment.StatusFragment"
+        android:label="StatusFragment" />
+</navigation>
