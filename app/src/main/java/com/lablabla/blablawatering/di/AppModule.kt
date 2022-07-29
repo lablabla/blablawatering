@@ -45,20 +45,4 @@ object AppModule {
         )
     }
 
-//    @Provides
-//    @Singleton
-//    fun providesViewModelProviderFactor(
-//        repository: StationsRepository
-//    ): StatusViewModelProviderFactory {
-//        return StatusViewModelProviderFactory(repository)
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun providesStatusViewModel(
-//        statusViewModelProviderFactory: StatusViewModelProviderFactory,
-//        @ActivityContext context: Context
-//    ) : StatusViewModel {
-//        return ViewModelProvider(context, statusViewModelProviderFactory).get(StatusViewModel::class.java)
-//    }
 }
