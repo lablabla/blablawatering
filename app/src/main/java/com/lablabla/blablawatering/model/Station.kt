@@ -4,14 +4,15 @@ import com.lablabla.blablawatering.data.local.entity.StationEntity
 import com.lablabla.blablawatering.model.devices.Solenoid
 import com.lablabla.blablawatering.model.enums.SolenoidState
 import com.lablabla.blablawatering.model.enums.WateringState
+import java.io.Serializable
 
 class Station(
-    private val id: Int,
-    private val name: String,
-    private val solenoid: Solenoid,
-    ) {
+    val id: Int,
+    val name: String,
+    val solenoid: Solenoid,
+    ) : Serializable{
 
-    public fun onEvent(event: Event) {
+    fun onEvent(event: Event) {
         val data = if (event.wateringState == WateringState.On) SolenoidState.Open else SolenoidState.Closed
         solenoid.setData(data)
     }

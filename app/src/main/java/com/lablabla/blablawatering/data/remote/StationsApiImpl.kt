@@ -1,10 +1,13 @@
 package com.lablabla.blablawatering.data.remote
 
+import com.lablabla.blablawatering.communication.MqttApi
 import com.lablabla.blablawatering.model.Station
 import com.lablabla.blablawatering.model.devices.Solenoid
 import com.lablabla.blablawatering.model.enums.SolenoidState
 
-class StationsApiImpl : StationsApi {
+class StationsApiImpl(
+    private val mqtt: MqttApi
+) : StationsApi {
     override fun getStations(): List<Station> {
         return listOf(
             Station(0, "Test0", Solenoid(0, SolenoidState.Open)),

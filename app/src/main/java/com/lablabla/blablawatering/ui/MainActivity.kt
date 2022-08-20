@@ -3,6 +3,7 @@ package com.lablabla.blablawatering.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.NavHostFragment
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModels()
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,23 +35,5 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
-        val mainViewModel: MainViewModel by viewModels()
-        lifecycleScope.launch {
-            mainViewModel.eventFlow.collectLatest { event ->
-                when (event) {
-                    is MainViewModel.UIEvent.ShowSnackbar -> {
-                        val snackbar = Snackbar.make(
-                            view,
-                            event.message,
-                            Snackbar.LENGTH_SHORT
-                        )
-                        snackbar.show()
-                    }
-                    is MainViewModel.UIEvent.SetProgressBarVisibility -> {
-                        binding.progressBar.visibility = event.visibility
-                    }
-                }
-            }
-        }
     }
 }
